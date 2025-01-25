@@ -14,7 +14,12 @@ export const HomePage = () => {
     <div className="containerHome">
       <p>This is a simple Leaflet React application.</p>
       <div className="bodyHomePage">
-        <MapContainer center={center} zoom={ZOOM_LEVEL} ref={mapRef}>
+        <MapContainer
+          center={center}
+          zoom={ZOOM_LEVEL}
+          style={{ minHeight: "90vh", width: "100%" }}
+          ref={mapRef}
+        >
           <TileLayer
             url={osm?.maptiler?.url}
             attribution={osm?.maptiler?.attribution}
