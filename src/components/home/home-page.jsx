@@ -7,6 +7,7 @@ import {
   FeatureGroup,
 } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw";
+import L, { rectangle } from "leaflet";
 import { osm, useGeoLocation } from "../../core";
 import cities from "../../core/data.json";
 
@@ -53,7 +54,24 @@ export const HomePage = () => {
       <div className="bodyHomePage">
         <MapContainer center={center} zoom={ZOOM_LEVEL} ref={mapRef}>
           <FeatureGroup>
-            <EditControl position="topright" onCreated={_created} />
+            <EditControl
+              position="topright"
+              onCreated={_created}
+              draw={
+                {
+                  //* To show or not this options
+                  // rectangle: false,
+                  // circle: false,
+                  // circlemarker: false,
+                  // marker: false,
+                  // polygon: false,
+                  // polyline: false,
+                  //* them does not work
+                  // remove: false,
+                  // edit: false,
+                }
+              }
+            />
           </FeatureGroup>
           <TileLayer
             url={osm?.maptiler?.url}
