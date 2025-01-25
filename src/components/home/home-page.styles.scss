@@ -17,4 +17,22 @@
       width: 100%;
     }
   }
+  .boxBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    button {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      img {
+        max-width: 22px;
+        max-height: 20px;
+      }
+    }
+  }
 }
