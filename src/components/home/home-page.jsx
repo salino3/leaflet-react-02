@@ -1,9 +1,17 @@
 import { useRef, useState } from "react";
-import { MapContainer, Popup, TileLayer, Marker } from "react-leaflet";
+import {
+  MapContainer,
+  Popup,
+  TileLayer,
+  Marker,
+  FeatureGroup,
+} from "react-leaflet";
+import { EditControl } from "react-leaflet-draw";
 import { osm, useGeoLocation } from "../../core";
 import cities from "../../core/data.json";
 
 import "leaflet/dist/leaflet.css";
+import "leaflet-draw/dist/leaflet.draw.css";
 import "./home-page.styles.scss";
 
 export const HomePage = () => {
@@ -32,7 +40,6 @@ export const HomePage = () => {
       mapRef.current.flyTo(location.coordinates, ZOOM_LEVEL, {
         animate: true,
       });
-      //   setCenter([location.coordinates.lat, location.coordinates.lng]);
     } else {
       alert(location?.error?.message);
     }
@@ -42,6 +49,9 @@ export const HomePage = () => {
       <p>This is a simple Leaflet React application.</p>
       <div className="bodyHomePage">
         <MapContainer center={center} zoom={ZOOM_LEVEL} ref={mapRef}>
+          <FeatureGroup>
+            <EditControl position="topright" />
+          </FeatureGroup>
           <TileLayer
             url={osm?.maptiler?.url}
             attribution={osm?.maptiler?.attribution}
