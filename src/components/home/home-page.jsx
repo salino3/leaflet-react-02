@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { MapContainer, Popup, TileLayer, Marker } from "react-leaflet";
-import { osm } from "../../core";
+import { osm, useGeoLocation } from "../../core";
 import cities from "../../core/data.json";
 
 import "leaflet/dist/leaflet.css";
@@ -17,6 +17,16 @@ export const HomePage = () => {
     iconAnchor: [12.5, 41],
     popupAnchor: [0, -34],
   });
+
+  const markerIcon2 = new L.Icon({
+    iconUrl: "/assets/icons/marker_02.svg",
+    iconSize: [25, 41],
+    iconAnchor: [12.5, 41],
+    popupAnchor: [0, -34],
+  });
+
+  const location = useGeoLocation();
+  console.log("here5", location);
 
   return (
     <div className="containerHome">
@@ -43,6 +53,14 @@ export const HomePage = () => {
                 </Popup>
               </Marker>
             ))}
+          {location?.loaded && !location.error && (
+            <Marker
+              icon={markerIcon2}
+              position={[location.coordinates.lat, location.coordinates.lng]}
+            >
+              <Popup>My location</Popup>
+            </Marker>
+          )}
         </MapContainer>
       </div>
     </div>
