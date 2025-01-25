@@ -44,13 +44,16 @@ export const HomePage = () => {
       alert(location?.error?.message);
     }
   };
+
+  const _created = (e) => console.log("Event:", e);
+
   return (
     <div className="containerHome">
       <p>This is a simple Leaflet React application.</p>
       <div className="bodyHomePage">
         <MapContainer center={center} zoom={ZOOM_LEVEL} ref={mapRef}>
           <FeatureGroup>
-            <EditControl position="topright" />
+            <EditControl position="topright" onCreated={_created} />
           </FeatureGroup>
           <TileLayer
             url={osm?.maptiler?.url}
