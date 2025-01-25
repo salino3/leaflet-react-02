@@ -26,8 +26,17 @@ export const HomePage = () => {
   });
 
   const location = useGeoLocation();
-  console.log("here5", location);
 
+  const showMyLocation = () => {
+    if (location?.loaded && !location.error && mapRef.current) {
+      mapRef.current.flyTo(location.coordinates, ZOOM_LEVEL, {
+        animate: true,
+      });
+      //   setCenter([location.coordinates.lat, location.coordinates.lng]);
+    } else {
+      alert(location?.error?.message);
+    }
+  };
   return (
     <div className="containerHome">
       <p>This is a simple Leaflet React application.</p>
@@ -62,6 +71,12 @@ export const HomePage = () => {
             </Marker>
           )}
         </MapContainer>
+      </div>
+      <div className="boxBtn" onClick={showMyLocation}>
+        <button>
+          Locate me{" "}
+          <img src={"/assets/images/slice_03.png"} alt="Paper aeroplane icon" />
+        </button>
       </div>
     </div>
   );
