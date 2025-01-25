@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="rootApp">
       <h1>React Leaflet Map</h1>
-      <details>
+      <details name="details" open={true}>
         <summary>Map</summary>
         <HomePage />
       </details>

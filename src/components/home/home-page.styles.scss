@@ -11,5 +11,10 @@
     min-height: 90vh;
     border: solid;
     width: 100%;
+
+    .leaflet-container {
+      min-height: 90vh;
+      width: 100%;
+    }
   }
 }
