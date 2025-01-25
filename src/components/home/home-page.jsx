@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { MapContainer, Popup, TileLayer, Marker } from "react-leaflet";
 import { osm } from "../../core";
+import cities from "../../core/data.json";
 
 import "leaflet/dist/leaflet.css";
 import "./home-page.styles.scss";
@@ -26,11 +27,22 @@ export const HomePage = () => {
             url={osm?.maptiler?.url}
             attribution={osm?.maptiler?.attribution}
           />
-          <Marker position={[13.084622, 80.248357]} icon={markerIcon}>
-            <Popup>
-              <strong>First Marker</strong>
-            </Popup>
-          </Marker>
+
+          {cities &&
+            cities?.length > 0 &&
+            cities.map((city, idx) => (
+              <Marker
+                key={idx}
+                position={[city.lat, city.lng]}
+                icon={markerIcon}
+              >
+                <Popup>
+                  <strong>
+                    {city.city} - {city.country}
+                  </strong>
+                </Popup>
+              </Marker>
+            ))}
         </MapContainer>
       </div>
     </div>
