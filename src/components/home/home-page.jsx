@@ -7,8 +7,8 @@ import {
   FeatureGroup,
 } from "react-leaflet";
 import { EditControl } from "react-leaflet-draw";
-import L, { rectangle } from "leaflet";
-import { osm, useGeoLocation } from "../../core";
+import L from "leaflet";
+import { osm, useGeoLocation, AddPrintControl } from "../../core";
 import cities from "../../core/data.json";
 
 import "leaflet/dist/leaflet.css";
@@ -77,7 +77,6 @@ export const HomePage = () => {
             url={osm?.maptiler?.url}
             attribution={osm?.maptiler?.attribution}
           />
-
           {cities &&
             cities?.length > 0 &&
             cities.map((city, idx) => (
@@ -101,6 +100,7 @@ export const HomePage = () => {
               <Popup>My location</Popup>
             </Marker>
           )}
+          <AddPrintControl />
         </MapContainer>
       </div>
       <div className="boxBtn" onClick={showMyLocation}>

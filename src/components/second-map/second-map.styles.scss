@@ -1,0 +1,38 @@
+.containerSecondMap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  .bodyHomePage {
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    border: solid;
+    width: 100%;
+
+    .leaflet-container {
+      min-height: 90vh;
+      width: 100%;
+    }
+  }
+  .boxBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    button {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+      img {
+        max-width: 22px;
+        max-height: 20px;
+      }
+    }
+  }
+}

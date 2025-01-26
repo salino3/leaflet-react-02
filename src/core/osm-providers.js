@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useMap } from "react-leaflet";
 
 export const osm = {
   maptiler: {
@@ -49,4 +50,39 @@ export const useGeoLocation = () => {
   }, []);
 
   return location;
+};
+
+export const AddPrintControl = () => {
+  const map = useMap();
+
+  useEffect(() => {
+    // Control para imprimir el mapa
+    const printControl = L.easyPrint({
+      title: "Print Map",
+      position: "topleft",
+      sizeModes: ["Current", "A4Portrait", "A4Landscape"],
+      filename: "map",
+      exportOnly: false, // Permite imprimir
+    });
+
+    // Control para exportar el mapa como imagen
+    const exportControl = L.easyPrint({
+      title: "Download Map",
+      position: "topleft",
+      sizeModes: ["Current", "A4Portrait", "A4Landscape"],
+      filename: "map",
+      exportOnly: true, // Solo descarga como imagen
+    });
+
+    // Agregar los controles al mapa
+    map.addControl(printControl);
+    map.addControl(exportControl);
+
+    return () => {
+      map.removeControl(printControl);
+      map.removeControl(exportControl);
+    };
+  }, [map]);
+
+  return null;
 };
