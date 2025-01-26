@@ -1,4 +1,4 @@
-import { HomePage } from "./components";
+import { HomePage, SecondMap } from "./components";
 import "./App.scss";
 
 function App() {
@@ -8,6 +8,10 @@ function App() {
       <details name="details" open={true}>
         <summary>Map</summary>
         <HomePage />
+      </details>
+      <details name="details" open={true}>
+        <summary> Second Map</summary>
+        <SecondMap />
       </details>
     </div>
   );
