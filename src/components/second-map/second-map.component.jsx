@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
-import { MapContainer, Popup, TileLayer, Marker } from "react-leaflet";
+import { MapContainer, Popup, TileLayer, Marker, useMap } from "react-leaflet";
 import L from "leaflet";
-import { osm } from "../../core";
-import cities from "../../core/data.json";
+import { osm, AddPrintControl } from "../../core";
 
 import "leaflet/dist/leaflet.css";
 import "leaflet-draw/dist/leaflet.draw.css";
+import "leaflet-easyprint";
 import "./second-map.styles.scss";
 
 export const SecondMap = () => {
@@ -49,12 +49,13 @@ export const SecondMap = () => {
             url={osm?.maptiler?.url}
             attribution={osm?.maptiler?.attribution}
           />
-
           <Marker position={[40.416775, -3.70379]} icon={markerIcon}>
             <Popup>
               <strong>Madrid</strong>
             </Popup>
           </Marker>
+
+          <AddPrintControl />
         </MapContainer>
       </div>
     </div>
